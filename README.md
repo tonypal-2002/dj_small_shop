@@ -1,6 +1,6 @@
 # dj_small_shop
  
-# Go to Terminal
+## Go to Terminal
 
 # Install Django Framework
 # pip install django
