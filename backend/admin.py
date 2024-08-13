@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from django.utils.html import format_html
-from backend.models import CustomUser
+from backend.models import CustomUser, Category
 
 from django.contrib.auth.admin import UserAdmin
 from backend.forms import CustomerUserCreationForm,CustomerUserChangeForm
@@ -31,3 +31,8 @@ class CustomUserAdmin(UserAdmin):
     image_tag.short_description = 'Image'
 
 admin.site.register(CustomUser,CustomUserAdmin)
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id','name',)
+
+admin.site.register(Category, CategoryAdmin)
