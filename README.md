@@ -8,36 +8,36 @@ Ensure you have Python installed. You can download it from [python.org] (https:/
  
 ## Go to Terminal
 
-# Install Django Framework
+1. **Install Django Framework**
 ```
 pip install django
 ```
-# Install Pillow Library
+2. **Install Pillow Library**
 ```
 pip install pillow
 ```
-# Install PDF Library
+3. **Install PDF Library**
 ```
 pip install xhtml2pdf
 ```
 
-# Install Django Cross-Origin Resource Sharing (CORS)
+4. **Install Django Cross-Origin Resource Sharing (CORS)**
 ```
 pip install django-cross-headers
 ```
-# Project Setup
+5. **Project Setup**
 ```
 django-admin startproject config .
 ```
-# Create Backend App
+6. **Create Backend App**
 ```
 python manage.py startapp backend
 ```
-# Create API V1 App
+7. **Create API V1 App**
 ```
 python manage.py startapp api_v1
 ```
-# Create API V2 App
+8. **Create API V2 App**
 ```
 python manage.py startapp api_v2
 ```
