@@ -15,7 +15,9 @@ Ensure you have Python installed. You can download it from [python.org] (https:/
 # pip install pillow
 
 # Install PDF Library
-# pip install xhtml2pdf
+```
+pip install xhtml2pdf
+```
 
 # Install Django Cross-Origin Resource Sharing (CORS)
 # pip install django-cross-headers
