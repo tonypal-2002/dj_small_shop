@@ -1,14 +1,50 @@
 {% extends 'frontend/layout/app.html' %}
 
 {% block title %}
-
-home
-
+    Home
 {% endblock %}
 
-
 {% block content %}
+<div class="container mt-4">
 
-home
+    <!-- Search and Filter Form -->
+    <form method="GET" action="{% url 'home' %}" class="mb-4">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <input type="text" name="search" class="form-control" placeholder="Search products..." value="{{ request.GET.search }}">
+            </div>
+            <div class="col-md-4">
+                <select name="category" class="form-select">
+                    <option value="All" {% if request.GET.category == 'All' %}selected{% endif %}>All Categories</option>
+                    {% for row in categories %}
+                        <option value="{{ row.id }}" {% if request.GET.category == row.id|stringformat:"s" %}selected{% endif %}>
+                            {{ row.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </form>
 
+    <div class="row">
+        {% for item in products %}
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'product_detail' item.id %}">
+                    <div class="card">
+                        <img src="{{ item.get_image_path }}" class="card-img-top" alt="{{ item.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.name }}</h5>
+                            <p class="card-text">{{ item.description }}</p>
+                            <p class="card-text"><strong>${{ item.price }}</strong></p>
+                            <a href="{% url 'cart_add' item.id %}" class="btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
