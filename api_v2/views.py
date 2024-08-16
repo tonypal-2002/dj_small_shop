@@ -1,6 +1,8 @@
-from django.shortcuts import render
+
 from rest_framework import generics
 from rest_framework.response import Response
+
+from rest_framework.permissions import AllowAny
 
 from backend.models import Category, Brand, Product, Order
 
@@ -8,6 +10,8 @@ from api_v2.serializers import CategorySerializer, BrandSerializer, ProductSeria
 
 
 class CategoryListView(generics.ListAPIView):
+    permission_classes = [AllowAny]
+
     queryset = Category. objects.all()
     serializer_class =  CategorySerializer
     def list(self, request, *args, **kwargs):
