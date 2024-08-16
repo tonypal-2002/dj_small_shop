@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'frontend',
     'rest_framework',
     'corsheaders',
+    'rest_framework.authtoken',
     'api_v2'
 ]
 
@@ -136,3 +137,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = 'media/'
 
 AUTH_USER_MODEL = 'backend.CustomUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
