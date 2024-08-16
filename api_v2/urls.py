@@ -1,7 +1,7 @@
 from django.urls import path
 
 from api_v2.views import CategoryListView, BrandListView, ProductListView, OrderListView, CartView, CartItemView, \
-    ClearCartView
+    ClearCartView, CustomAuthToken, UserCreateAPIView
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
