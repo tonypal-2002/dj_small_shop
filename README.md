@@ -23,7 +23,7 @@ pip install xhtml2pdf
 
 4. **Install Django Cross-Origin Resource Sharing (CORS)**
 ```
-pip install django-cross-headers
+pip install django-cors-headers
 ```
 5. **Project Setup**
 ```
