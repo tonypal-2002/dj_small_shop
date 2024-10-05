@@ -1,7 +1,7 @@
 from django.urls import path
 
 from api_v2.views import CategoryListView, BrandListView, ProductListView, OrderListView, CartView, CartItemView, \
-    ClearCartView, CustomAuthToken, UserCreateAPIView
+    ClearCartView, CustomAuthToken, UserCreateAPIView, UserDetailView
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
@@ -12,6 +12,9 @@ urlpatterns = [
 
     # Login Type 2
     path('login', CustomAuthToken.as_view(), name='custom_api_token_auth'),
+
+    # User
+    path('user/', UserDetailView.as_view(), name='user-detail'),
 
     path('categories', CategoryListView.as_view(), name = 'category_list'),
     path('brands', BrandListView.as_view(), name='brand_list'),
