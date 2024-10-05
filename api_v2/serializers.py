@@ -84,9 +84,9 @@ class CartSerializer(serializers.ModelSerializer):
         return obj.product.name if obj.product else None
 
     def get_product_image(self, obj):
-        if obj.product and obj.product.images.exists():
+        if obj.product and obj.product.image_path:  # Use image_path instead of image
             request = self.context.get('request')
-            image_url = obj.product.images.first().image.url
+            image_url = obj.product.image_path.url
             return request.build_absolute_uri(image_url) if request else image_url
         return None
 
