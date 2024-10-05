@@ -1,5 +1,6 @@
-
+from django.http import HttpResponse
 from rest_framework import generics, status
+from rest_framework.authentication import TokenAuthentication
 
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
@@ -45,8 +46,24 @@ class CustomAuthToken(ObtainAuthToken):
         # })
 
 
-        return  Response(token.key)
+        # return  Response(token.key)
+        # Return the token as plain text
+        return HttpResponse(token.key, content_type="text/plain")
 
+class UserDetailView(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        # request.user is the user associated with the token
+        user = request.user
+        # Customize the data to be returned as per your needs
+        data = {
+            'user_id': user.pk,
+            'email': user.email,
+            'username': user.username,
+        }
+        return Response(data)
 
 class CategoryListView(generics.ListAPIView):
     permission_classes = [AllowAny]
