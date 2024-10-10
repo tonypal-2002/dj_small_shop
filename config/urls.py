@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from api_v1 import views
 from config import settings
 
 from django.conf.urls.static import static
@@ -24,5 +25,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('backend.urls')),
-    path('api_v2/', include('api_v2.urls'))
+    path('api_v2/', include('api_v2.urls')),
+    path('categories/', views.CategoryListCreateView.as_view(), name='category-list-create'),
+    path('categories/<int:pk>/', views.CategoryRetrieveUpdateDestroyView.as_view(),name='category-detail'),
 ]+static (settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
